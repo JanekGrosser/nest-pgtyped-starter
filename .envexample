@@ -1,0 +1,5 @@
+# NODE SERVER PORT
+APP_PORT=4070
+
+# LOCAL DEV DB
+DATABASE_URL="postgresql://postgres:root@127.0.0.1:5482/pg_typed_starter"

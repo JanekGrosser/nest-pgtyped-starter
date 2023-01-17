@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  psql:
+    image: postgres:14.6-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    ports:
+      - '5482:5432'
+    volumes:
+      - psql:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    
+volumes:
+  psql:
+    driver: local
