@@ -1,0 +1,11 @@
+{
+    "transforms": [
+      {
+        "mode": "sql",
+        "include": "**/*.sql",
+        "emitTemplate": "{{dir}}/__generated__/{{name}}.queries.ts"
+      }
+    ],
+    "srcDir": "./src/",
+    "dbUrl": "postgresql://postgres:root@127.0.0.1:5482/pg_typed_starter"
+  }
