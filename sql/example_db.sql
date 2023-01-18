@@ -78,3 +78,4 @@ VALUES (1, 'Black Swan', 1),
 INSERT INTO book_comments (user_id, book_id, body)
 VALUES (1, 1, 'Fantastic read, recommend it!'),
        (1, 2, 'Did not like it, expected much more...');
+       

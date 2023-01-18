@@ -15,7 +15,7 @@ export interface ISelectNowQuery {
   result: ISelectNowResult;
 }
 
-const selectNowIR: any = {"usedParamSet":{},"params":[],"statement":"SELECT NOW() AS \"myDate\""};
+const selectNowIR: any = { usedParamSet: {}, params: [], statement: 'SELECT NOW() AS "myDate"' };
 
 /**
  * Query generated from SQL:
@@ -23,6 +23,4 @@ const selectNowIR: any = {"usedParamSet":{},"params":[],"statement":"SELECT NOW(
  * SELECT NOW() AS "myDate"
  * ```
  */
-export const selectNow = new PreparedQuery<ISelectNowParams,ISelectNowResult>(selectNowIR);
-
-
+export const selectNow = new PreparedQuery<ISelectNowParams, ISelectNowResult>(selectNowIR);

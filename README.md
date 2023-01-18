@@ -2,7 +2,6 @@
 
 Nest starter with PostgreSQL in docker-compose file
 
-
 ## Installation
 
 ```bash

@@ -1,4 +1,4 @@
-import { Injectable, OnModuleDestroy, Provider } from '@nestjs/common';
+import { Injectable, OnModuleDestroy } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PreparedQuery } from '@pgtyped/query';
 import { Pool, PoolConfig } from 'pg';
@@ -10,10 +10,10 @@ export class DatabaseProvider implements OnModuleDestroy {
 
   public constructor(private readonly configService: ConfigService) {
     this.config = {
-      connectionString: this.configService.get<string>('DATABASE_URL') as string,
+      connectionString: process.env.DATABASE_URL,
       // LF TODO:: figure out if this will be a thing
-      ssl: this.configService.get<string>('NODE_ENV') !== 'development',
-      max: Number.parseInt(this.configService.get<string>('DATABASE_MAX_CONNECTIONS') ?? '4'),
+      ssl: process.env.NODE_ENV !== 'development',
+      max: Number.parseInt(process.env.DATABASE_MAX_CONNECTIONS ?? '4'),
     };
     this.clientPool = new Pool(this.config);
   }
