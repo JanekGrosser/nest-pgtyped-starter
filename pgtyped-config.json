@@ -3,7 +3,7 @@
     {
       "mode": "sql",
       "include": "**/*.sql",
-      "emitTemplate": "{{dir}}/__generated__/{{name}}.queries.ts"
+      "emitTemplate": "{{dir}}/generated/{{name}}.queries.ts"
     }
   ],
   "srcDir": "./src/",
