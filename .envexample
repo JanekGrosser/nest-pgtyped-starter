@@ -1,3 +1,5 @@
+NODE_ENV="development"
+
 # NODE SERVER PORT
 APP_PORT=4070
 
