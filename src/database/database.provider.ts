@@ -1,4 +1,4 @@
-import { Injectable, OnModuleDestroy } from '@nestjs/common';
+import { Injectable, NotImplementedException, OnModuleDestroy } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PreparedQuery } from '@pgtyped/query';
 import { Pool, PoolConfig } from 'pg';
@@ -36,6 +36,7 @@ export class DatabaseProvider implements OnModuleDestroy {
   }
 
   public async migrate(): Promise<void> {
+    throw new NotImplementedException();
     // // File Paths go here after searching for *.sql files in a given directory
     // const fileList: Array<string> = [];
     // return Promise.all(
