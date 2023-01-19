@@ -32,6 +32,7 @@ export class DatabaseProvider implements OnModuleDestroy {
   }
 
   private runRawQuery(sql: string): unknown {
+    // TODO: Check if it's safe to use pool in case ehrn used in a transaction.
     return this.clientPool.query(sql);
   }
 

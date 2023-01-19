@@ -1,0 +1,51 @@
+import { Test } from '@nestjs/testing';
+import { BooksService } from './books.service';
+
+describe('BooksService', () => {
+  let booksService: BooksService;
+
+  beforeEach(async () => {
+    const moduleRef = await Test.createTestingModule({
+      imports: [], // Add
+      controllers: [], // Add
+      providers: [], // Add
+    }).compile();
+
+    booksService = moduleRef.get<BooksService>(BooksService);
+  });
+
+  it('should be defined', () => {
+    expect(booksService).toBeDefined();
+  });
+});
+
+import { Injectable } from '@nestjs/common';
+import { DatabaseProvider } from '../database/database.provider';
+import {
+  findAuthors,
+  findAuthorsById,
+  IFindAuthorsByIdParams,
+  IFindAuthorsByIdResult,
+  IFindAuthorsParams,
+  IFindAuthorsResult,
+} from './generated/authors.queries';
+
+@Injectable()
+export class AuthorsService {
+  public constructor(private readonly db: DatabaseProvider) {}
+
+  public async findAuthors(): Promise<IFindAuthorsResult[]> {
+    const books = await this.db.runQuery<IFindAuthorsParams, IFindAuthorsResult>(findAuthors);
+    return books;
+  }
+
+  public async findAuthorsById(authorId: number): Promise<IFindAuthorsByIdResult> {
+    const author = await this.db.runQuery<IFindAuthorsByIdParams, IFindAuthorsByIdResult>(
+      findAuthorsById,
+      {
+        authorId: authorId,
+      },
+    );
+    return author[0];
+  }
+}

@@ -1,30 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseProvider } from '../database/database.provider';
-import {
-  findAuthors,
-  findAuthorsById,
-  IFindAuthorsByIdParams,
-  IFindAuthorsByIdResult,
-  IFindAuthorsParams,
-  IFindAuthorsResult,
-} from './generated/authors.queries';
+import { CreateAuthorDto } from './dto/create-author.dto';
+import { UpdateAuthorDto } from './dto/update-author.dto';
 
 @Injectable()
 export class AuthorsService {
-  public constructor(private readonly db: DatabaseProvider) {}
-
-  public async findAuthors(): Promise<IFindAuthorsResult[]> {
-    const books = await this.db.runQuery<IFindAuthorsParams, IFindAuthorsResult>(findAuthors);
-    return books;
+  create(createAuthorDto: CreateAuthorDto) {
+    return 'This action adds a new author';
   }
 
-  public async findAuthorsById(authorId: number): Promise<IFindAuthorsByIdResult> {
-    const author = await this.db.runQuery<IFindAuthorsByIdParams, IFindAuthorsByIdResult>(
-      findAuthorsById,
-      {
-        authorId: authorId,
-      },
-    );
-    return author[0];
+  findAll() {
+    return `This action returns all authors`;
+  }
+
+  findOne(id: number) {
+    return `This action returns a #${id} author`;
+  }
+
+  update(id: number, updateAuthorDto: UpdateAuthorDto) {
+    return `This action updates a #${id} author`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} author`;
   }
 }

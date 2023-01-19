@@ -1,27 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseProvider } from '../database/database.provider';
-import {
-  IFindBooksByIdResult,
-  IFindBooksParams,
-  IFindBooksResult,
-  findBooks,
-  IFindBooksByIdParams,
-  findBooksById,
-} from './generated/books.queries';
+import { CreateBookDto } from './dto/create-book.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BooksService {
-  public constructor(private readonly db: DatabaseProvider) {}
-
-  public async findBooks(): Promise<IFindBooksByIdResult[]> {
-    const books = await this.db.runQuery<IFindBooksParams, IFindBooksResult>(findBooks);
-    return books;
+  create(createBookDto: CreateBookDto) {
+    return 'This action adds a new book';
   }
 
-  public async findBooksById(bookId: number): Promise<IFindBooksByIdResult> {
-    const book = await this.db.runQuery<IFindBooksByIdParams, IFindBooksByIdResult>(findBooksById, {
-      bookId: bookId,
-    });
-    return book[0];
+  findAll() {
+    return `This action returns all books`;
+  }
+
+  findOne(id: number) {
+    return `This action returns a #${id} book`;
+  }
+
+  update(id: number, updateBookDto: UpdateBookDto) {
+    return `This action updates a #${id} book`;
+  }
+
+  remove(id: number) {
+    return `This action removes a #${id} book`;
   }
 }
