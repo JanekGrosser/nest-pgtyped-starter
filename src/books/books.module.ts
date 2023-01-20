@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
+import { DatabaseProvider } from 'src/infrastructure/database/database.provider';
 import { BooksService } from './books.service';
-import { BooksController } from './books.controller';
+import { GetBooksController } from './getBooks/getBooks.controller';
 
 @Module({
-  controllers: [BooksController],
-  providers: [BooksService]
+  controllers: [GetBooksController],
+  providers: [BooksService, DatabaseProvider],
 })
 export class BooksModule {}

@@ -5,6 +5,8 @@
 /dist
 /node_modules
 
+**/__generated__
+
 # Logs
 logs
 *.log
