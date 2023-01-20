@@ -1,5 +1,5 @@
-import { Category } from 'src/enums/book.enums';
-import { Author } from './author.entity';
+import { Category } from '../enums/book.enums';
+import { Author } from '../../authors/entities/author.entity';
 
 export class Book {
   rank: number;
